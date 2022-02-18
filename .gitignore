@@ -1,8 +1,9 @@
-# Ignore the predictor data sets
-predictor/data/
+# Ignore the data sets
 data/
 
+# Ignore Python
 __pycache__
+
 # Ignore Mac specific files
 .DS_Store
 
