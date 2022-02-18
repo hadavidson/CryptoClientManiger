@@ -3,10 +3,10 @@ import os
 #other imports
 
 #my imports
-import cm
+import src.cm
 
 class ui:
-    ccm1 = cm.cm()
+    ccm1 = src.cm.cm()
 
     def __init__(self):
         super().__init__()
@@ -36,8 +36,7 @@ class ui:
             if(userIn==1):
                 first = input("First Name: ")
                 last = input("Last Name: ")
-                initAmout = self.checkIfNumber("Inital Investemnt amount")
-                if(self.ccm1.addClient(first, last, initAmout)):
+                if(self.ccm1.addClient(first, last)):
                     output = "Successfully added "+first+" "+last+" at index "+str(self.ccm1.findClientIndex(first,last))
                 else:
                     output = "Failed to add client."
@@ -65,17 +64,18 @@ class ui:
                     output = ("Failed to withdrawal $"+str(withdrawalAmount)+" from client.")
             elif(userIn == 6):
                 clientIndex = self.checkIfNumber("Client Index Number")
-                output = (self.ccm1.getClietName(clientIndex)+" is worth: "+str(self.ccm1.getClientWorth(clientIndex)))
+                currentWorth = self.checkIfNumber("Current Worth")
+                output = (self.ccm1.getClietName(clientIndex)+" is worth: "+str(self.ccm1.getClientWorth(clientIndex,currentWorth)))
             elif(userIn == 7):
-                output = ""
+                output = "Welcome to the CRM"
             elif(userIn == 8):
                 self.clearScreen()
                 print("Good bye!")
                 exit()
 
             self.clearScreen()
-            if(output!=""):
-                print(output)
+            # if(output!=""):
+            print(output)
             self.drawUI(clear=False)
                 
         else:
@@ -84,6 +84,7 @@ class ui:
     def drawUI(self, bad=False, clear=True):
         if(clear):
             self.clearScreen()
+            print("Welcome to the CRM")
         if(bad):
             print("Bad input try again.")
         print("1: Add Client          ||  4: Deposit To Client")
