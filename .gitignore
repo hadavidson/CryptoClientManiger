@@ -1,0 +1,10 @@
+# Ignore the predictor data sets
+predictor/data/
+data/
+
+__pycache__
+# Ignore Mac specific files
+.DS_Store
+
+#ignore vsCode
+.vscode
